@@ -2,7 +2,7 @@
 General Code Storage
 
 ### blah.css ###
-Various css modifications for discord. Likely outdated.
+Various css modifications for discord. **Likely outdated**.
 
 ### count.py ###
 Basic counter commands for use in [Flagbot](https://github.com/GriffinG1/Flagbot) with events.py. **Outdated**.
