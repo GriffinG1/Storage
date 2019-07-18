@@ -1,4 +1,4 @@
-""" events.py - Counter ticker for use in Flagbot with count.py
+""" events.py - Counter ticker for use with count.py
     Copyright (C) 2019  GriffinG1
 
     This program is free software: you can redistribute it and/or modify
@@ -17,24 +17,14 @@
 import discord
 from discord.ext import commands
 
-stop_message = """
-Ultra Sun and Ultra Moon support for PKSM is expected in **{}** weeks :upside_down:
+update_message = """
+The counter is now at **{}** :upside_down:
 """
-usum = [
-    'us',
-    'um',
-    'ultra moon',
-    'ultra sun',
-    'usum',
+listA = [
 ]
-support = [
-    'support',
-    'updated',
-    'available',
-    'working',
-    'compatible',
-    'compatibility',
+listB = [
 ]
+
 
 class Events:
 
@@ -42,39 +32,37 @@ class Events:
         self.bot = bot
         print('Addon "{}" loaded'.format(self.__class__.__name__))
 
-
     async def on_message(self, message):
         if self.bot.counter:
-            usumCtn = False
-            supCtn = False
+            list_A_ctn = False
+            list_B_ctn = False
             badStr = False
             words = message.content.lower().replace(',', '').replace('`', '').split()
             if not message.author.name == self.bot.user.name:
                 for word in words:
-                    for x in usum:
+                    for x in listA:
                         if x == word:
-                            usumCtn = True
+                            list_A_ctn = True
                             break
-                    for y in support:
+                    for y in listB:
                         if y == word:
-                            supCtn = True
+                            list_B_ctn = True
                             break
-                if supCtn and usumCtn:
+                if list_B_ctn and list_A_ctn:
                     badStr = True
-                    
+
                 if badStr is True:
                     with open("tally.txt") as f:
                         tally = f.read()
-                        f.close()
                     with open("tally.txt", "w") as f:
                         tally = int(tally) + 1
                         f.write(str(tally))
-                        f.close()
-                    await message.channel.send(stop_message.format(tally))
+                    await message.channel.send(update_message.format(tally))
                 else:
                     pass
             else:
                 pass
+
 
 def setup(bot):
     bot.add_cog(Events(bot))
