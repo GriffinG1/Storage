@@ -20,9 +20,13 @@ import os
 try:
     import qrcode
 except:
+    print("Failed to load qrcode. Installing...")
     install("qrcode[pil]")
-    
-def install(package): # https://stackoverflow.com/a/50255019
+    print("qrcode successfully installed.")
+    import qrcode
+
+
+def install(package):  # https://stackoverflow.com/a/50255019
     subprocess.call([sys.executable, "-m", "pip", "install", package])
 
 another_code = "yes"
