@@ -22,6 +22,7 @@ class Count:
 
     def __init__(self, bot):
         self.bot = bot
+        self.bot.counter = True  # Would normally be stored in main.py. Handles toggling of counter.
         print('Addon "{}" loaded'.format(self.__class__.__name__))
 
     @commands.command(hidden=True)
