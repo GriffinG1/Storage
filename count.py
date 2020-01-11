@@ -35,7 +35,7 @@ class Count:
                 ctx.command.reset_cooldown(ctx)
                 try:
                     return await ctx.author.send("This command is restricted to <#1>. Please try again there.")
-                except:
+                except discord.Forbidden:
                     return await ctx.send("This command is restricted to <#1>. Please try again there.")
             with open("tally.txt") as f:
                 tally = f.read()

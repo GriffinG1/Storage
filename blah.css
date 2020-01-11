@@ -35,6 +35,7 @@
 /*Hide Mention Badge*/
 .guild .badge, .btn-friends .badge {
     visibility:hidden
+}
     
 /*Minimize Member List*/
 .channel-members{

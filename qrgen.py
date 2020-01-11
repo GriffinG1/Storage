@@ -19,7 +19,7 @@ import sys
 import os
 try:
     import qrcode
-except:
+except ModuleNotFoundError:
     print("Failed to load qrcode. Installing...")
     install("qrcode[pil]")
     print("qrcode successfully installed.")
@@ -28,6 +28,7 @@ except:
 
 def install(package):  # https://stackoverflow.com/a/50255019
     subprocess.call([sys.executable, "-m", "pip", "install", package])
+
 
 another_code = "yes"
 
